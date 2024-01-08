@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.font.Decoration;
 
 import java.io.File;
 import java.io.IOException;
@@ -128,7 +129,7 @@ public final class TimeMissingPlugin extends JavaPlugin implements Listener {
             else {
                 time = time / 60;
                 if(time < 60){
-                    return ChatColor.YELLOW + " " + ChatColor.BOLD + time + " Minutes(s)";
+                    return ChatColor.YELLOW + " " + ChatColor.BOLD + time + " Minute(s)";
                 }
                 else {
                     time = time / 60;
