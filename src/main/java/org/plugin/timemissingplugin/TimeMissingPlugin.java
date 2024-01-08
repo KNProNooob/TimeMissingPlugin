@@ -49,17 +49,15 @@ public final class TimeMissingPlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onLeave(PlayerQuitEvent event) throws IOException {
 
-        /*
+/*
         Random random = new Random();
         int randomNum = random.nextInt(3);
         if(randomNum == 0){
             event.setQuitMessage(ChatColor.YELLOW + event.getPlayer().getDisplayName() + " went to touch grass irl");
         } else if (randomNum == 1) {
             event.setQuitMessage(ChatColor.YELLOW + event.getPlayer().getDisplayName() + " went missing");
-        } else if (randomNum == 2) {
-            event.setQuitMessage(ChatColor.YELLOW + event.getPlayer().getDisplayName() + " left the game");
         }
-        */
+*/
 
         long logout_time = System.currentTimeMillis();
         File file = new File("plugins/logout_times.yml");

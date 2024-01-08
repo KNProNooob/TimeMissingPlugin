@@ -29,6 +29,6 @@ public class TabComplete implements TabCompleter {
             List<String> options = new ArrayList<String>(names);
             return options;
         }
-    return null;
+    return new ArrayList<>();
     }
 }
