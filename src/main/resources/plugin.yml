@@ -4,10 +4,9 @@ main: org.plugin.timemissingplugin.TimeMissingPlugin
 api-version: '1.20'
 authors: [KNProNoob]
 commands:
-  missing_list:
-    description: Shows the missing list
-  remove_missing:
-    description: Removes a player from the missing list
-    usage: /remove_missing [Player name]
+  missing:
+    description: missing list - Shows missing list; missing remove - Removes a player from the missing list
+    usage: /missing list; /missing remove <Player>
+
 
 
