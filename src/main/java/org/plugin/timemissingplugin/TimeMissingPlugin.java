@@ -36,11 +36,21 @@ public final class TimeMissingPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) throws IOException {
-        File file = new File("plugins/logout_times.yml");
+        boolean join_announcement = true;
+        File file = new File("plugins/time_missing_settings.yml");
         YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
-        if(configuration.contains(event.getPlayer().getName())){
-            long time = System.currentTimeMillis() - configuration.getLong(event.getPlayer().getName());
-            event.setJoinMessage(event.getJoinMessage() + "\n" + event.getPlayer().getName() + " was missing for:" + format_time(time));
+        if (configuration.contains("join_announcement")) {
+            join_announcement = configuration.getBoolean("join_announcement");
+        }
+
+
+        file = new File("plugins/logout_times.yml");
+        configuration = YamlConfiguration.loadConfiguration(file);
+        if(join_announcement) {
+            if (configuration.contains(event.getPlayer().getName())) {
+                long time = System.currentTimeMillis() - configuration.getLong(event.getPlayer().getName());
+                event.setJoinMessage(event.getJoinMessage() + "\n" + event.getPlayer().getName() + " was missing for:" + format_time(time));
+            }
         }
         configuration.set(event.getPlayer().getName(), 0);
         configuration.save(file);
@@ -48,16 +58,6 @@ public final class TimeMissingPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onLeave(PlayerQuitEvent event) throws IOException {
-
-/*
-        Random random = new Random();
-        int randomNum = random.nextInt(3);
-        if(randomNum == 0){
-            event.setQuitMessage(ChatColor.YELLOW + event.getPlayer().getDisplayName() + " went to touch grass irl");
-        } else if (randomNum == 1) {
-            event.setQuitMessage(ChatColor.YELLOW + event.getPlayer().getDisplayName() + " went missing");
-        }
-*/
 
         long logout_time = System.currentTimeMillis();
         File file = new File("plugins/logout_times.yml");

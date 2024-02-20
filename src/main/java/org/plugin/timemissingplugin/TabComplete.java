@@ -20,6 +20,7 @@ public class TabComplete implements TabCompleter {
             List<String> options = new ArrayList<String>();
             options.add("list");
             options.add("remove");
+            options.add("toggle");
             return options;
         }
         if(args[0].equalsIgnoreCase("remove") && args.length == 2){

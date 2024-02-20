@@ -74,6 +74,40 @@ public class Commands implements CommandExecutor {
             }
         }
 
+        if(args[0].equalsIgnoreCase("toggle")){
+            if(sender instanceof Player){
+                Player player = (Player) sender;
+                if(player.isOp()) {
+                    File file = new File("plugins/time_missing_settings.yml");
+                    YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
+                    boolean join_announcement;
+                    if (!configuration.contains("join_announcement")){
+                        join_announcement = false;
+                    }
+                    else {
+                        join_announcement = !configuration.getBoolean("join_announcement");
+                    }
+                    configuration.set("join_announcement", join_announcement);
+                    try {
+                        configuration.save(file);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if(join_announcement){
+                        player.sendMessage("The return announcements are now on");
+                    }
+                    else {
+                        player.sendMessage("The return announcements are now off");
+                    }
+
+                }
+                else{
+                    player.sendMessage(ChatColor.RED + "You need to be op to run this command!");
+                }
+
+            }
+        }
+
         return true;
     }
 

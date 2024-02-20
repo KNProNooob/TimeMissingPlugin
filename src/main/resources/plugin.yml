@@ -5,8 +5,8 @@ api-version: '1.20'
 authors: [KNProNoob]
 commands:
   missing:
-    description: missing list - Shows missing list; missing remove - Removes a player from the missing list
-    usage: /missing list; /missing remove <Player>
+    description: missing list - Shows missing list; missing remove - Removes a player from the missing list; missing toggle - toggles join announcement
+    usage: /missing list; /missing remove <Player>; /missing toggle
 
 
 
